@@ -1,0 +1,26 @@
+{% extends "base.twig" %}
+
+{% block title %}Products{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <ul class="products" id="grocery-list">
+            {% for product in products %}
+
+                <li class="products__item">
+                    <a href="/product/id/{{ product.id }}" class="products__link">
+                        <img src="{{ product.img }}" alt="{{ product.title }}" class="products__img" width="270" height="270">
+                    </a>
+                    <h1 class="products__title">{{ product.title }}</h1>
+                    <p class="products__description">{{ product.description }}</p>
+                    <span class="products__price">Price: {{ product.price }} &dollar;</span>
+                    <button class="products__to-cart">To cart</button>
+                </li>
+
+            {% endfor %}
+        </ul>
+        <button class="more-btn" id="more">Еще</button>
+    </div>
+
+{% endblock %}

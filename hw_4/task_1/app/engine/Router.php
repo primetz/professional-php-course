@@ -28,7 +28,6 @@ final class Router
             if ($key % 2 === 0) {
                 self::$args[$value] = $arr[$key + 1];
             }
-
         }
     }
 
