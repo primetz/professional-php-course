@@ -1,3 +1,9 @@
+/*
+* 1. Подгрузка контента с помощью AJAX.
+*       а) На базе движка из курса «PHP. Уровень 1» взять модуль каталога.
+*       б) Выводить не все товары разом, а подгружать по 25 по нажатию кнопки «Еще».
+*/
+
 const moreBtn = document.getElementById('more');
 const groceryList = document.getElementById('grocery-list');
 
