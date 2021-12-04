@@ -1,0 +1,55 @@
+body {
+    position: relative;
+}
+
+.container {
+    width: 100%;
+    max-width: 1140px;
+    padding: 0 30px;
+    margin: 0 auto;
+}
+
+.products {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style: none;
+}
+
+.products__item {
+    background-color: #eee;
+}
+
+.products__link {
+    display: flex;
+}
+
+.products__to-cart {
+    display: flex;
+    margin: 0 10px 10px auto;
+}
+
+.more-btn {
+    display: flex;
+    margin: 25px 0 0 auto;
+    cursor: pointer;
+}
+
+.product {
+    display: flex;
+}
+
+.product__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.no-more-popup {
+    position: absolute;
+    top: 50%;
+}
