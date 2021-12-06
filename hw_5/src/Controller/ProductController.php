@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Form\ProductType;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,9 +18,10 @@ class ProductController extends AbstractController
     /**
      * @Route("/", name="homepage")
      */
-    public function index(): Response
+    public function index(ManagerRegistry $doctrine): Response
     {
-        $rep = $this->getDoctrine()->getRepository(Product::class);
+        $entityManager = $doctrine->getManager();
+        $rep = $entityManager->getRepository(Product::class);
         $products = $rep->findAll();
 
         return $this->render('product/index.html.twig', [
@@ -30,9 +32,10 @@ class ProductController extends AbstractController
     /**
      * @Route("/product/show/{id}", name="product_show")
      */
-    public function product(int $id): Response
+    public function product(ManagerRegistry $doctrine, int $id): Response
     {
-        $rep = $this->getDoctrine()->getRepository(Product::class);
+        $entityManager = $doctrine->getManager();
+        $rep = $entityManager->getRepository(Product::class);
         $product = $rep->find($id);
 
         return $this->render('product/product.html.twig', [
@@ -43,7 +46,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/product/new", name="product_new")
      */
-    public function new(Request $request, SluggerInterface $slugger): Response
+    public function new(ManagerRegistry $doctrine, Request $request, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(ProductType::class);
 
@@ -67,7 +70,7 @@ class ProductController extends AbstractController
 
             $product->setImg($newFilename);
 
-            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager = $doctrine->getManager();
             $entityManager->persist($product);
             $entityManager->flush();
 
