@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Products{% endblock %}
+
+{% block body %}
+    <style>
+        .container {
+            width: 100%;
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .products-list {
+            display: flex;
+            width: 490px;
+            padding: 0;
+            gap: 20px;
+            list-style: none;
+        }
+    </style>
+
+    <div class="container">
+        <ul class="products-list">
+            {% for product in products %}
+                <li class="products-list__item">
+                    <a href="{{ path('product_show', {id: product.id}) }}" class="products-list__link">
+                        <img src="{{ asset('images/'~product.img~'') }}" alt="{{ product.title }}" class="products-list__img" width="150" height="150">
+                    </a>
+                    <div class="products-list__body">
+                        <h2 class="products-list__title">{{ product.title }}</h2>
+                        <p class="products-list__description">{{ product.description }}</p>
+                        <span class="products-list__price">{{ product.price }} &dollar;</span>
+                        <button class="products-list__to-cart">Add to cart</button>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
