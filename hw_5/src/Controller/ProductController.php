@@ -22,6 +22,9 @@ class ProductController extends AbstractController
     {
         $entityManager = $doctrine->getManager();
         $rep = $entityManager->getRepository(Product::class);
+    public function index(): Response
+    {
+        $rep = $this->getDoctrine()->getRepository(Product::class);
         $products = $rep->findAll();
 
         return $this->render('product/index.html.twig', [
@@ -36,6 +39,9 @@ class ProductController extends AbstractController
     {
         $entityManager = $doctrine->getManager();
         $rep = $entityManager->getRepository(Product::class);
+    public function product(int $id): Response
+    {
+        $rep = $this->getDoctrine()->getRepository(Product::class);
         $product = $rep->find($id);
 
         return $this->render('product/product.html.twig', [
@@ -47,6 +53,7 @@ class ProductController extends AbstractController
      * @Route("/product/new", name="product_new")
      */
     public function new(ManagerRegistry $doctrine, Request $request, SluggerInterface $slugger): Response
+    public function new(Request $request, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(ProductType::class);
 
@@ -71,6 +78,7 @@ class ProductController extends AbstractController
             $product->setImg($newFilename);
 
             $entityManager = $doctrine->getManager();
+            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($product);
             $entityManager->flush();
 
