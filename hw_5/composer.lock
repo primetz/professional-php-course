@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "37a934323778aa0bf9484890918f00b4",
+    "content-hash": "0ebca0aeb71fe1fc8ce3685f0078bba8",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -7456,6 +7456,7 @@
             "time": "2021-11-23T10:19:22+00:00"
         },
         {
+
             "name": "twig/extra-bundle",
             "version": "v3.3.4",
             "source": {
